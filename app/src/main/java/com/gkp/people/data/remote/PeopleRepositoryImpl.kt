@@ -15,6 +15,7 @@ class PeopleRepositoryImpl @Inject constructor(
     private val peoplePagingSource: PeoplePagingSource,
     private val peopleApi: PeopleApi
 ) : PeopleRepository{
+
     override fun getPeople(): Flow<PagingData<People>> {
         return Pager(
             pagingSourceFactory = {peoplePagingSource},
