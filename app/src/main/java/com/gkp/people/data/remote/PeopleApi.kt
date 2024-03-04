@@ -1,5 +1,6 @@
 package com.gkp.people.data.remote
 
+import com.gkp.people.data.remote.Dto.DtoPeople
 import com.gkp.people.data.remote.Dto.NetworkResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -11,5 +12,5 @@ interface PeopleApi {
     suspend fun getPeoples(@Query("page") page: Int): NetworkResponse
 
     @GET("people/{id}")
-    suspend fun getPeopleById(@Path("id") id: Int)
+    suspend fun getPeopleById(@Path("id") id: Int): DtoPeople
 }
