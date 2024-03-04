@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SwapiPeople</string>
+    <string name="people_height">Height</string>
+    <string name="people_gender">Gender</string>
 </resources>

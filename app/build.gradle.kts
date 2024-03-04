@@ -89,6 +89,12 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:$okhttp3Version")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    val lifecycle_version = "2.7.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+
+
 
 
 }

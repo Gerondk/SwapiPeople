@@ -7,6 +7,7 @@ fun DtoPeople.toPeople(): People {
     return People(
         name = name,
         birthYear = birthYear,
-        gender = gender
+        gender = if (gender == "n/a") "unknown" else gender,
+        height = height
     )
 }
