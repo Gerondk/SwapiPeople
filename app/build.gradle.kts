@@ -41,6 +41,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.8"
@@ -82,6 +83,10 @@ dependencies {
     // retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    val okhttp3Version = "4.10.0"
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttp3Version")
+    implementation("com.squareup.okhttp3:okhttp:$okhttp3Version")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
