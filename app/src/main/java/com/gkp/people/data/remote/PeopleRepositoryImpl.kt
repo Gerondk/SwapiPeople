@@ -11,6 +11,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
+private const val INIT_LOAD_SIZE = 10
+private const val PAGE_SIZE = 10
 class PeopleRepositoryImpl @Inject constructor(
     private val peoplePagingSource: PeoplePagingSource,
     private val peopleApi: PeopleApi
@@ -19,7 +21,10 @@ class PeopleRepositoryImpl @Inject constructor(
     override fun getPeople(): Flow<PagingData<People>> {
         return Pager(
             pagingSourceFactory = {peoplePagingSource},
-            config = PagingConfig(initialLoadSize = 10, pageSize = 10)
+            config = PagingConfig(
+                initialLoadSize = INIT_LOAD_SIZE,
+                pageSize = PAGE_SIZE
+            )
         ).flow
     }
 

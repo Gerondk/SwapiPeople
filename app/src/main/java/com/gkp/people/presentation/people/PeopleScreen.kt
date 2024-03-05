@@ -12,6 +12,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -69,7 +72,10 @@ fun PeopleScreen() {
                     items(peopleState.itemCount) { index ->
                         val people = peopleState[index]
                         people?.let {
-                            PeopleItem(people = it)
+                            PeopleItem(
+                                modifier = Modifier.fillMaxWidth(),
+                                people = it
+                            )
                         }
                     }
                     if (peopleState.loadState.append is LoadState.Loading) {
@@ -87,23 +93,29 @@ fun PeopleScreen() {
 
 @Composable
 fun PeopleItem(modifier: Modifier = Modifier, people: People) {
-    Column(modifier = modifier.fillMaxWidth()) {
-        Text(
-            text = people.name,
-            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        PeopleInfoRow(
-            modifier = Modifier.fillMaxWidth(),
-            infoLabel = stringResource(R.string.people_gender),
-            info = people.gender
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        PeopleInfoRow(
-            modifier = modifier.fillMaxWidth(),
-            infoLabel = stringResource(R.string.people_height),
-            info = "${people.height} cm"
-        )
+    Card(
+        modifier = modifier,
+        shape = MaterialTheme.shapes.medium,
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 10.dp)
+    ) {
+        Column(modifier = Modifier.padding(10.dp)) {
+            Text(
+                text = people.name,
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            PeopleInfoRow(
+                modifier = Modifier.fillMaxWidth(),
+                infoLabel = stringResource(R.string.people_gender),
+                info = people.gender
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            PeopleInfoRow(
+                modifier = Modifier.fillMaxWidth(),
+                infoLabel = stringResource(R.string.people_height),
+                info = "${people.height} cm"
+            )
+        }
     }
 
 }
