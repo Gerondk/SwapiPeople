@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -60,7 +59,8 @@ fun PeopleScreen() {
                 CircularProgressIndicator(
                     Modifier
                         .size(50.dp)
-                        .align(Alignment.Center))
+                        .align(Alignment.Center)
+                )
             } else {
                 LazyColumn(
                     modifier = Modifier
@@ -113,7 +113,7 @@ fun PeopleItem(modifier: Modifier = Modifier, people: People) {
             PeopleInfoRow(
                 modifier = Modifier.fillMaxWidth(),
                 infoLabel = stringResource(R.string.people_height),
-                info = "${people.height} cm"
+                info = heightWithUnit(people.height)
             )
         }
     }
@@ -134,3 +134,6 @@ fun PeopleInfoRow(
         Text(text = info)
     }
 }
+
+private const val HEIGHT_UNIT = "cm"
+private fun heightWithUnit( height: String) : String = "$height $HEIGHT_UNIT"
