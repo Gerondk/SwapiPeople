@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.gkp.mya.R
 import com.gkp.people.domain.model.People
@@ -62,31 +64,42 @@ fun PeopleScreen() {
                         .align(Alignment.Center)
                 )
             } else {
-                LazyColumn(
-                    modifier = Modifier
-                        .padding(paddingValues)
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    items(peopleState.itemCount) { index ->
-                        val people = peopleState[index]
-                        people?.let {
-                            PeopleItem(
-                                modifier = Modifier.fillMaxWidth(),
-                                people = it
-                            )
-                        }
-                    }
-                    if (peopleState.loadState.append is LoadState.Loading) {
-                        item {
-                            CircularProgressIndicator(Modifier.size(50.dp))
-                        }
-                    }
-                }
+                PeopleList(
+                    peopleItemsState = peopleState,
+                    paddingValues = paddingValues
+                )
             }
         }
+    }
+}
 
+@Composable
+fun PeopleList(
+    peopleItemsState: LazyPagingItems<People>,
+    paddingValues: PaddingValues
+) {
+
+    LazyColumn(
+        modifier = Modifier
+            .padding(paddingValues)
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(peopleItemsState.itemCount) { index ->
+            val people = peopleItemsState[index]
+            people?.let {
+                PeopleItem(
+                    modifier = Modifier.fillMaxWidth(),
+                    people = it
+                )
+            }
+        }
+        if (peopleItemsState.loadState.append is LoadState.Loading) {
+            item {
+                CircularProgressIndicator(Modifier.size(50.dp))
+            }
+        }
     }
 
 }
