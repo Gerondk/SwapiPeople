@@ -9,6 +9,7 @@ import com.gkp.people.data.remote.PeopleApi
 import com.gkp.people.data.toPeople
 import com.gkp.people.domain.model.People
 import java.io.IOException
+import java.util.concurrent.CancellationException
 import javax.inject.Inject
 
 
@@ -36,7 +37,10 @@ class PeoplePagingSource @Inject constructor(
             LoadResult.Error(e)
         } catch (e: HttpException) {
             LoadResult.Error(e)
+        } catch ( e: Exception) {
+            if (e is CancellationException)
+                throw  e
+            LoadResult.Error(e)
         }
-
     }
 }
