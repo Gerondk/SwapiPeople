@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -86,7 +87,10 @@ fun PeopleList(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        items(peopleItemsState.itemCount) { index ->
+        items(
+            count = peopleItemsState.itemCount,
+            key = { peopleItemsState[it]?.name ?: -1 }
+        ) { index ->
             val people = peopleItemsState[index]
             people?.let {
                 PeopleItem(

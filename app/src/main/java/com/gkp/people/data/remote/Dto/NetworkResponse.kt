@@ -1,17 +1,15 @@
 package com.gkp.people.data.remote.Dto
 
+import com.google.gson.annotations.SerializedName
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class NetworkResponse(
-    @SerialName("count")
+   @SerializedName("count")
     val count: Int,
-    @SerialName("next")
+   @SerializedName("next")
     val next: String,
-    @SerialName("previous")
+   @SerializedName("previous")
     val previous: Any,
-    @SerialName("results")
+   @SerializedName("results")
     val results: List<DtoPeople>
 )

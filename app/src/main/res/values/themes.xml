@@ -2,4 +2,9 @@
 <resources>
 
     <style name="Theme.SwapiPeople" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.StartMy" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground"> @color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/baseline_baby_changing_station_24</item>
+        <item name="postSplashScreenTheme">@style/Theme.SwapiPeople</item>
+    </style>
 </resources>

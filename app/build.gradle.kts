@@ -11,7 +11,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.gkp.mya"
+        applicationId = "com.gkp.people"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -88,11 +88,13 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttp3Version")
     implementation("com.squareup.okhttp3:okhttp:$okhttp3Version")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     val lifecycle_version = "2.7.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 
 
 

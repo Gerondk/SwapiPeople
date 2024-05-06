@@ -1,6 +1,5 @@
 package com.gkp.people.data.paging
 
-import android.net.http.HttpException
 import android.os.Build
 import androidx.annotation.RequiresExtension
 import androidx.paging.PagingSource
@@ -35,11 +34,11 @@ class PeoplePagingSource @Inject constructor(
 
         } catch (e: IOException) {
             LoadResult.Error(e)
-        } catch (e: HttpException) {
+        } catch (e: retrofit2.HttpException) {
             LoadResult.Error(e)
-        } catch ( e: Exception) {
+        } catch (e: Exception) {
             if (e is CancellationException)
-                throw  e
+                throw e
             LoadResult.Error(e)
         }
     }

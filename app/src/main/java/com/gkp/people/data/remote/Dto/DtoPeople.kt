@@ -1,41 +1,40 @@
 package com.gkp.people.data.remote.Dto
 
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
+
 data class DtoPeople(
-    @SerialName("birth_year")
+    @SerializedName("birth_year")
     val birthYear: String,
-    @SerialName("created")
+    @SerializedName("created")
     val created: String,
-    @SerialName("edited")
+    @SerializedName("edited")
     val edited: String,
-    @SerialName("eye_color")
+    @SerializedName("eye_color")
     val eyeColor: String,
-    @SerialName("films")
+    @SerializedName("films")
     val films: List<String>,
-    @SerialName("gender")
+    @SerializedName("gender")
     val gender: String,
-    @SerialName("hair_color")
+    @SerializedName("hair_color")
     val hairColor: String,
-    @SerialName("height")
+    @SerializedName("height")
     val height: String,
-    @SerialName("homeworld")
+    @SerializedName("homeworld")
     val homeworld: String,
-    @SerialName("mass")
+    @SerializedName("mass")
     val mass: String,
-    @SerialName("name")
+    @SerializedName("name")
     val name: String,
-    @SerialName("skin_color")
+    @SerializedName("skin_color")
     val skinColor: String,
-    @SerialName("species")
+    @SerializedName("species")
     val species: List<String>,
-    @SerialName("starships")
+    @SerializedName("starships")
     val starships: List<String>,
-    @SerialName("url")
+    @SerializedName("url")
     val url: String,
-    @SerialName("vehicles")
+    @SerializedName("vehicles")
     val vehicles: List<String>
 )
